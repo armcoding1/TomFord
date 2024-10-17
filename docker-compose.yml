@@ -1,29 +1,70 @@
 services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_tomford
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - client_service
+    networks:
+      - tomford-network
   client_service:
     image: react-app-npm
-    build: ./client_service
     container_name: client_service_tomford
+    build: ./client_service
+    stdin_open: true
     ports:
       - "3000:3000"
     volumes:
       - "./client_service:/app/client_service:delegated"
       - /app/client_service/node_modules/
-    stdin_open: true
     networks:
       - tomford-network
     environment:
       - CHOKIDAR_USEPOLLING=true
-  nginx:
-    image: nginx:latest
-    container_name: nginx-server
+  postgres:
+    image: postgres:latest
+    container_name: postgres_tomford
     ports:
-      - "80:80"
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: tom_ford
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anubis9878
+    networks:
+      - tomford-network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_tomford
+    environment:
+      PGADMIN_DEFAULT_EMAIL: tomford@admin.com
+      PGADMIN_DEFAULT_PASSWORD: anubis9878
+    ports:
+      - "5050:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - pgadmin_data:/var/lib/pgadmin
     networks:
       - tomford-network
     depends_on:
-      - client_service
+      - postgres
+  product_service:
+    build: ./product_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tom_ford
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=anubis9878
+    networks:
+      - tomford-network
+
+volumes:
+  postgres_data:
+  pgadmin_data:
 
 networks:
   tomford-network:
