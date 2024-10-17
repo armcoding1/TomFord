@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from './shared/components/Header/Header';
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Client Service!</h1>
+    <div className="container">
+      <Header />
     </div>
   );
 }
