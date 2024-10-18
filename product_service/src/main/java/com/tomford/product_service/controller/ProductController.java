@@ -79,6 +79,13 @@ public class ProductController {
         productService.deleteProductById(id);
     }
 
+    /**
+     * Request for updating product in the database by id
+     *
+     * @param id             from url for updating product
+     * @param productRequest new updated product data from client
+     * @return new updated product with type {@link Product}
+     */
     @PutMapping("/update/{id}")
     public Product updateProductById(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
         return productService.updateProduct(id, productRequest);
