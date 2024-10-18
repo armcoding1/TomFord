@@ -24,6 +24,47 @@ services:
       - tomford-network
     environment:
       - CHOKIDAR_USEPOLLING=true
+  postgres:
+    image: postgres:latest
+    container_name: postgres_tomford
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: tom_ford
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anubis9878
+    networks:
+      - tomford-network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_tomford
+    environment:
+      PGADMIN_DEFAULT_EMAIL: tomford@admin.com
+      PGADMIN_DEFAULT_PASSWORD: anubis9878
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - tomford-network
+    depends_on:
+      - postgres
+  product_service:
+    build: ./product_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tom_ford
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=anubis9878
+    networks:
+      - tomford-network
+
+volumes:
+  postgres_data:
+  pgadmin_data:
 
 networks:
   tomford-network:
