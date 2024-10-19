@@ -3,3 +3,9 @@
     margin: 0 auto;
     padding: 0 45px;
 }
+
+.container-sm {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 150px;
+}
