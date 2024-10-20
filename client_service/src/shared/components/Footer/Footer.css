@@ -1,0 +1,29 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #a1a1a1;
+    padding: 15px;
+}
+
+.footer__left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer__icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer__rights {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.footer__logo {
+    color: #333;
+    font-size: 18px;
+}

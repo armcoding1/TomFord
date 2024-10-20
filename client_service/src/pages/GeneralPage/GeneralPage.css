@@ -4,3 +4,7 @@
     color: #000;
     margin-bottom: 30px;
 }
+
+.ad-banner {
+    display: flex;
+}
