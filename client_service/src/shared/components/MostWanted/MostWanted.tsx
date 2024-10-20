@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import "./ProductCard.css";
-import axios from "axios";
+import "./MostWanted.css";
 import { Productable } from "../../../types/Productable";
+import axios from "axios";
 import VolumeSelector from "../VolumeSelector/VolumeSelector";
 
-const ProductCard = () => {
+const MostWanted = () => {
     const [products, setProducts] = useState<Productable[]>([]);
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null);
 
     useEffect(() => {
         const fetchProductByCategory = async () => {
             try {
-                const response = await axios.get("http://localhost/products/getByCategory/fragrance");
+                const response = await axios.get("http://localhost/products/getTop3");
                 setProducts(response.data);
             } catch (e: any) {
                 console.log("Error getting product from server.", e);
@@ -47,4 +47,4 @@ const ProductCard = () => {
     );
 };
 
-export default ProductCard;
+export default MostWanted;

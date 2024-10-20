@@ -38,7 +38,7 @@ public class ProductService implements Productable {
                     .rating(productRequest.getRating())
                     .reviewsCount(productRequest.getReviewsCount())
                     .price(productRequest.getPrice())
-                    .size(productRequest.getSize())
+                    .volumes(productRequest.getVolumes())
                     .stockQuantity(productRequest.getStockQuantity())
                     .available(productRequest.getAvailable())
                     .details(productRequest.getDetails())
@@ -52,6 +52,8 @@ public class ProductService implements Productable {
                     .mainImage(productRequest.getMainImage())
                     .skuCode(SKUGenerator.generateSKU(8))
                     .category(productRequest.getCategory())
+                    .selled(0)
+                    .hoverImage(productRequest.getHoverImage())
                     .build();
             savedProduct = productRepository.save(product);
         } catch (Exception e) {
@@ -124,7 +126,7 @@ public class ProductService implements Productable {
                     existingProduct.setRating(productRequest.getRating());
                     existingProduct.setReviewsCount(productRequest.getReviewsCount());
                     existingProduct.setPrice(productRequest.getPrice());
-                    existingProduct.setSize(productRequest.getSize());
+                    existingProduct.setVolumes(productRequest.getVolumes());
                     existingProduct.setStockQuantity(productRequest.getStockQuantity());
                     existingProduct.setAvailable(productRequest.getAvailable());
                     existingProduct.setDetails(productRequest.getDetails());
@@ -138,9 +140,18 @@ public class ProductService implements Productable {
                     existingProduct.setMainImage(productRequest.getMainImage());
                     existingProduct.setSkuCode(SKUGenerator.generateSKU(8));
                     existingProduct.setCategory(productRequest.getCategory());
-
+                    existingProduct.setHoverImage(productRequest.getHoverImage());
                     return productRepository.save(existingProduct);
                 })
                 .orElse(null);
+    }
+
+    /**
+     * Method for receiving top 3 products ordered by selled count
+     *
+     * @return list of top 3 products
+     */
+    public List<Product> getTop3ProductsBySelled() {
+        return productRepository.findTop3ByOrderBySelledDesc();
     }
 }

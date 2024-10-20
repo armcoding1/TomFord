@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className="header container">
             <a href="/">
-                <h1 className="header__title">TOM FORD</h1>
+                <h1 className="header__title">DUBAI PERFUME</h1>
             </a>
             <nav className="header__nav">
                 <ul className="header__list">

@@ -1,11 +1,12 @@
 export interface Productable {
+    id: number;
     name: string;
     model: string;
     description: string;
     rating: number;
     reviewsCount: number;
     price: number;
-    size: number;
+    volumes: string;
     stockQuantity: number;
     available: boolean;
     details: string;
@@ -19,4 +20,5 @@ export interface Productable {
     mainImage: string;
     skuCode: string;
     category: string;
+    hoverImage: string;
 }

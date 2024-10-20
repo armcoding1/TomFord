@@ -13,7 +13,7 @@ public class ProductRequest {
     private Byte rating;
     private Long reviewsCount;
     private Integer price;
-    private Short size;
+    private String volumes;
     private Integer stockQuantity;
     private Boolean available;
     private String details;
@@ -27,4 +27,5 @@ public class ProductRequest {
     private String mainImage;
     private String skuCode;
     private String category;
+    private String hoverImage;
 }

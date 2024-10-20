@@ -1,0 +1,33 @@
+.general-page__banner {
+    background-image: url("../../../../public/banner-image.jpeg");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    margin-bottom: 100px;
+    padding: 25px;
+}
+
+.general-page__title {
+    color: #fff;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.general-page__text {
+    color: #fff;
+    font-weight: 600;
+}
+
+.general-page__btn {
+    cursor: pointer;
+    border: 1px solid #fff;
+    background-color: transparent;
+    padding: 10px 15px;
+    color: #fff;
+    font-weight: 700;
+}

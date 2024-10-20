@@ -77,9 +77,8 @@ public class Product {
      * Product flacone size, type Short
      * Must be positive and not null
      */
-    @Positive(message = "Product size must be positive and mor than zero")
-    @NotNull(message = "Product size cannot be null")
-    private Short size;
+    @NotBlank(message = "Product size cannot be blank")
+    private String volumes;
 
     /**
      * Product stock quantity, type Integer
@@ -175,4 +174,17 @@ public class Product {
      */
     @NotBlank(message = "Product category cannot be empty")
     private String category;
+
+    /**
+     * Selled, type Long
+     * Selled count cannot must be 0 or positive
+     */
+    @PositiveOrZero(message = "Selled count must be positive or zero")
+    private Integer selled = 0;
+
+    /**
+     * Hover image, type String
+     */
+    @Column(name = "hover_image")
+    private String hoverImage;
 }

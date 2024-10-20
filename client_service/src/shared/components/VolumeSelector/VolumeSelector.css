@@ -1,0 +1,12 @@
+.volume-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.volume-selector__btn {
+    padding: 10px 20px;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+}

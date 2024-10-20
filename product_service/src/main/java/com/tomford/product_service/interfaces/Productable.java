@@ -54,4 +54,11 @@ public interface Productable {
      * @return new updated product with type {@link Product}
      */
     Product updateProduct(Long id, ProductRequest productRequest);
+
+    /**
+     * Method for receiving top 3 products ordered by selled count
+     *
+     * @return list of top 3 products
+     */
+    List<Product> getTop3ProductsBySelled();
 }

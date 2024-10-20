@@ -90,4 +90,14 @@ public class ProductController {
     public Product updateProductById(@PathVariable Long id, @RequestBody ProductRequest productRequest) {
         return productService.updateProduct(id, productRequest);
     }
+
+    /**
+     * Request for receiving top 3 products ordered by selled count
+     *
+     * @return list of top 3 products
+     */
+    @GetMapping("/getTop3")
+    public List<Product> getTop3ProductsBySelled() {
+        return productService.getTop3ProductsBySelled();
+    }
 }
