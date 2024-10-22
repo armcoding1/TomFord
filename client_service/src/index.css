@@ -10,3 +10,7 @@
 body {
     font-family: "Roboto";
 }
+
+button {
+    cursor: pointer;
+}

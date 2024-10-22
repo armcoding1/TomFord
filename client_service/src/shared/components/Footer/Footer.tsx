@@ -15,7 +15,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <span className="footer__rights">&copy; 2024 TOM FORD. All rights reserved</span>
+                <span className="footer__rights">&copy; 2024 DUBAI PERFUME. All rights reserved</span>
             </div>
         </div>
     );

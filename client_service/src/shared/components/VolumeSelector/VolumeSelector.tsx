@@ -16,7 +16,7 @@ const VolumeSelector: FC<any> = ({ volumes }) => {
                     key={volume}
                     onClick={() => handleSelect(volume)}
                     style={{
-                        border: selectedVolume === volume ? "2px solid black" : "1px solid gray"
+                        border: selectedVolume === volume ? "1.8px solid black" : "1px solid gray"
                     }}
                 >
                     {volume}

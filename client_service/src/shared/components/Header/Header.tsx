@@ -9,16 +9,10 @@ const Header = () => {
             <nav className="header__nav">
                 <ul className="header__list">
                     <li className="header__item">
-                        <a href="/products/most-wanted" className="header__link">MOST WANTED</a>
-                    </li>
-                    <li className="header__item">
                         <a href="/products/fragrance" className="header__link">FRAGRANCE</a>
                     </li>
                     <li className="header__item">
-                        <a href="/products/makeup" className="header__link">MAKEUP</a>
-                    </li>
-                    <li className="header__item">
-                        <a href="/products/skincare" className="header__link">SKINCARE</a>
+                        <a href="/products/most-wanted" className="header__link">MOST WANTED</a>
                     </li>
                     <li className="header__item">
                         <a href="/products/gifts" className="header__link">GIFTS</a>

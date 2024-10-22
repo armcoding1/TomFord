@@ -3,10 +3,13 @@ import "./ProductCard.css";
 import axios from "axios";
 import { Productable } from "../../../types/Productable";
 import VolumeSelector from "../VolumeSelector/VolumeSelector";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = () => {
     const [products, setProducts] = useState<Productable[]>([]);
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null);
+    const [productId, setProductId] = useState<number | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProductByCategory = async () => {
@@ -20,23 +23,28 @@ const ProductCard = () => {
         fetchProductByCategory();
     }, []);
 
+    const getProductId = (id: number) => {
+        setProductId(id);
+        navigate(`/product/${id}`)
+    };
+
     return (
         <div className="product-card-parent">
             {products.map((product: Productable) => (
                 <div
                     className="product-card"
                     key={product.id}
-                    onMouseEnter={() => setHoveredProductId(product.id)}
-                    onMouseLeave={() => setHoveredProductId(null)}
                 >
                     <img
                         src={hoveredProductId === product.id ? product.hoverImage : product.mainImage}
                         alt={product.name}
                         className="product-card__img"
+                        onMouseEnter={() => setHoveredProductId(product.id)}
+                        onMouseLeave={() => setHoveredProductId(null)}
+                        onClick={() => getProductId(product.id)}
                     />
                     <div className="product-card__content">
-                        <VolumeSelector volumes={product.volumes.split(",")} />
-                        <h3 className="product-card__title">{product.model} EAU DE PARFUM</h3>
+                        <h3 className="product-card__title">{product.name} {product.model}</h3>
                         <p className="product-card__text">{product.description}</p>
                         <span className="product-card__price">${product.price}</span>
                         <button className="product-card__btn">ADD TO BAG</button>

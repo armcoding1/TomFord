@@ -48,6 +48,7 @@ public class Product {
      */
     @Size(max = 500, message = "Description too long")
     @NotBlank(message = "Product description cannot be empty")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     /**
@@ -101,6 +102,7 @@ public class Product {
      * Must be not blank
      */
     @NotBlank(message = "Product details cannot be blank")
+    @Column(columnDefinition = "TEXT")
     private String details;
 
     /**
@@ -140,18 +142,19 @@ public class Product {
      * Product ingredients cannot be empty
      */
     @NotBlank(message = "Product ingredients cannot be empty")
+    @Column(columnDefinition = "TEXT")
     private String ingredients;
 
     /**
      * Product video's url, type String
      */
-    @Column(name = "video_url")
+    @Column(name = "video_url", columnDefinition = "TEXT")
     private String videoUrl;
 
     /**
      * Product gallery images, type String
      */
-    @Column(name = "gallery_images")
+    @Column(name = "gallery_images", columnDefinition = "TEXT")
     private String galleryImages;
 
     /**
@@ -159,6 +162,7 @@ public class Product {
      * Product main image cannot be null
      */
     @NotNull(message = "Product main image cannot be null")
+    @Column(name = "main_image", columnDefinition = "TEXT")
     private String mainImage;
 
     /**
@@ -185,6 +189,6 @@ public class Product {
     /**
      * Hover image, type String
      */
-    @Column(name = "hover_image")
+    @Column(name = "hover_image", columnDefinition = "TEXT")
     private String hoverImage;
 }

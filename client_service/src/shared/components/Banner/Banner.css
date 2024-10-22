@@ -12,17 +12,6 @@
     padding: 25px;
 }
 
-.general-page__title {
-    color: #fff;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-}
-
-.general-page__text {
-    color: #fff;
-    font-weight: 600;
-}
-
 .general-page__btn {
     cursor: pointer;
     border: 1px solid #fff;
