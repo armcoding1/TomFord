@@ -53,7 +53,7 @@ const ProductInfo: FC<any> = () => {
         <div className="product-info container-sm">
             <div className="product-info__left">
                 {galleryImagesArray.map((galleryImage: string) => (
-                    <img src={galleryImage} alt={galleryImage} className="product-info__left__img" />
+                    <img src={galleryImage} key={galleryImage} alt={galleryImage} className="product-info__left__img" />
                 ))}
             </div>
             <div className="product-info__center">
@@ -63,6 +63,24 @@ const ProductInfo: FC<any> = () => {
                 <h2 className="product-info__right__title">{product.name} {product.model}</h2>
                 <span className="product-info__right__reviews">{product.reviewsCount} REVIEWS</span>
                 <p className="product-info__right__description">{product.description}</p>
+                <span className="product-info__right__price">${product.price}.00 <span className="product-info__right__ml">| 50 ml</span></span>
+                <VolumeSelector volumes={product.volumes.split(",")} />
+                <div className="product-info__right__quantity">
+                    <div className="product-info__right__quantity__count">
+                        <button onClick={decrement} className="product-info__right__quantity__btn">-</button>
+                        <span>{quantity}</span>
+                        <button onClick={increment} className="product-info__right__quantity__btn">+</button>
+                    </div>
+                    <button className="product-info__right__btn">ADD TO BAG</button>
+                </div>
+                <Accordion items={accordionItems} />
+            </div>
+
+            <div className="product-info__center__786">
+                <h2 className="product-info__right__title">{product.name} {product.model}</h2>
+                <span className="product-info__right__reviews">{product.reviewsCount} REVIEWS</span>
+                <p className="product-info__right__description">{product.description}</p>
+                <img src={product.mainImage} className="product-info__786__center__img" alt={product.name} />
                 <span className="product-info__right__price">${product.price}.00 <span className="product-info__right__ml">| 50 ml</span></span>
                 <VolumeSelector volumes={product.volumes.split(",")} />
                 <div className="product-info__right__quantity">

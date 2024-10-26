@@ -7,4 +7,5 @@
 
 .ad-banner {
     display: flex;
+    flex-wrap: wrap;
 }

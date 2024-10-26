@@ -3,6 +3,8 @@
     height: 584px;
     background-image: url("https://assets.sdcdn.io/_sb/f/1018472/2500x584/e3e4ee58e2/tfb_online_plpbanner_signaturegifting_desktop_2500x584.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: end;

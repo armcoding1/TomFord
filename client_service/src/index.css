@@ -9,8 +9,13 @@
 
 body {
     font-family: "Roboto";
+    min-width: 320px;
 }
 
 button {
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
 }

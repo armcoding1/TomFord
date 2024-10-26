@@ -154,4 +154,18 @@ public class ProductService implements Productable {
     public List<Product> getTop3ProductsBySelled() {
         return productRepository.findTop3ByOrderBySelledDesc();
     }
+
+    /**
+     * Method for receive products from database by name
+     *
+     * @param name from client
+     * @return Products array, type {@link Product}
+     */
+    public List<Product> findByName(String name) {
+        List<Product> products = productRepository.findByName(name);
+        if (products.isEmpty()) {
+            System.out.println("Products not found with this name");
+        }
+        return products;
+    }
 }

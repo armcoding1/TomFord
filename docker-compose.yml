@@ -51,14 +51,38 @@ services:
       - postgres
   product_service:
     build: ./product_service
+    container_name: product_service_tomford
     ports:
       - "8080:8080"
     depends_on:
       - postgres
+      - rabbitmq
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tom_ford
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=anubis9878
+    networks:
+      - tomford-network
+  basket_service:
+    build: ./basket_service
+    container_name: basket_service_tomford
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+      - rabbitmq
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tom_ford
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=anubis9878
+    networks:
+      - tomford-network
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq_tomford
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - tomford-network
 

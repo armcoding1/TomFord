@@ -13,3 +13,20 @@
     outline: none;
     width: calc(25% - 10px);
 }
+
+@media (max-width: 786px) {
+    .volume-selector__btn {
+        width: calc(33% - 10px);
+    }
+}
+
+@media (max-width: 420px) {
+    .volume-selector__btn {
+        width: calc(50% - 10px);
+    }
+
+    .product-info__right__btn {
+        font-size: 10px;
+        padding: 0;
+    }
+}

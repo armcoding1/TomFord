@@ -2,3 +2,9 @@
     display: flex;
     gap: 40px;
 }
+
+@media (max-width: 786px) {
+    .fragrance-page__flex {
+        display: block;
+    }
+}

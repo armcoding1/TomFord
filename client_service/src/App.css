@@ -9,3 +9,31 @@
     margin: 0 auto;
     padding: 0 150px;
 }
+
+@media (max-width: 1024px) {
+    .container-sm {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 0 60px;
+    }
+
+    .container {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 786px) {
+    .container-sm {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 0 30px;
+    }
+
+    .container {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+}

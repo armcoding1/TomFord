@@ -1,14 +1,18 @@
 package com.tomford.product_service.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tomford.product_service.dto.ProductRequest;
 import com.tomford.product_service.model.Product;
 import com.tomford.product_service.service.ProductService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Product controller for working with client and database and REST API
@@ -22,6 +26,9 @@ public class ProductController {
      */
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     /**
      * Post request for create product
@@ -99,5 +106,35 @@ public class ProductController {
     @GetMapping("/getTop3")
     public List<Product> getTop3ProductsBySelled() {
         return productService.getTop3ProductsBySelled();
+    }
+
+    @PostMapping("/send")
+    public String sendHelloMessage() throws Exception {
+        List<Product> products = productService.getTop3ProductsBySelled();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String messages = objectMapper.writeValueAsString(products);
+        rabbitTemplate.convertAndSend("hello-queue", messages);
+        return "Message sent to RabbitMQ queue!";
+    }
+
+    /**
+     * Request for receive products from database by name
+     *
+     * @param name from client
+     * @return Products array, type {@link Product}
+     */
+    @GetMapping("/getByName/{name}")
+    public List<Product> getByName(@PathVariable String name) {
+        String[] splitedName;
+        if (name.contains("_")) {
+            splitedName = name.split("_");
+
+            String joinedName = Arrays.stream(splitedName)
+                    .map(String::toUpperCase)
+                    .collect(Collectors.joining(" "));
+            return productService.findByName(joinedName);
+        }
+
+        return productService.findByName(name.toUpperCase());
     }
 }

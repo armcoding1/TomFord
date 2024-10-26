@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tomford</groupId>
-    <artifactId>product_service</artifactId>
+    <artifactId>basket_service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>product_service</name>
-    <description>Product service for Tom Ford</description>
+    <name>basket_service</name>
+    <description>Basket service for Tom Ford</description>
     <url/>
     <licenses>
         <license/>
