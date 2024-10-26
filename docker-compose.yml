@@ -32,7 +32,7 @@ services:
     environment:
       POSTGRES_DB: tom_ford
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: anubis9878
+      POSTGRES_PASSWORD: postgres
     networks:
       - tomford-network
   pgadmin:
@@ -40,7 +40,7 @@ services:
     container_name: pgadmin_tomford
     environment:
       PGADMIN_DEFAULT_EMAIL: tomford@admin.com
-      PGADMIN_DEFAULT_PASSWORD: anubis9878
+      PGADMIN_DEFAULT_PASSWORD: postgres
     ports:
       - "5050:80"
     volumes:
@@ -60,7 +60,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tom_ford
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=anubis9878
+      - SPRING_DATASOURCE_PASSWORD=postgres
     networks:
       - tomford-network
   basket_service:
@@ -74,7 +74,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tom_ford
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=anubis9878
+      - SPRING_DATASOURCE_PASSWORD=postgres
     networks:
       - tomford-network
   rabbitmq:

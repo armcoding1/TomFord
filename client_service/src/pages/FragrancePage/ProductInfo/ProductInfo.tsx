@@ -4,11 +4,14 @@ import VolumeSelector from "../../../shared/components/VolumeSelector/VolumeSele
 import Accordion from "./Accordion/Accordion";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import ImageViewer from "../../../shared/components/ImageViewer/ImageViewer";
 
 const ProductInfo: FC<any> = () => {
     const [product, setProduct] = useState<any>(null);
     const { id } = useParams();
     const [quantity, setQuantity] = useState(1);
+    const [selectedImageIdx, setSelectedImageIdx] = useState(0);
+    const [viewImage, setViewImage] = useState(null);
 
     const decrement = () => {
         setQuantity(quantity - 1);
@@ -49,15 +52,23 @@ const ProductInfo: FC<any> = () => {
 
     const galleryImagesArray = product.galleryImages.split(",");
 
+    const handleSetImage = (idx: number) => {
+        setSelectedImageIdx(idx);
+    };
+
+    const handleSetViewImage = () => {
+        setViewImage(galleryImagesArray[selectedImageIdx])
+    };
+
     return (
         <div className="product-info container-sm">
             <div className="product-info__left">
-                {galleryImagesArray.map((galleryImage: string) => (
-                    <img src={galleryImage} key={galleryImage} alt={galleryImage} className="product-info__left__img" />
+                {galleryImagesArray.map((galleryImage: string, idx: number) => (
+                    <img src={galleryImage} key={galleryImage} alt={galleryImage} className={`product-info__left__img ${selectedImageIdx == idx ? "active" : ""}`} onClick={() => handleSetImage(idx)} />
                 ))}
             </div>
             <div className="product-info__center">
-                <img src={product.mainImage} className="product-info__center__img" alt={product.name} />
+                <img src={galleryImagesArray[selectedImageIdx]} className="product-info__center__img" alt={product.name} onClick={handleSetViewImage} />
             </div>
             <div className="product-info__right">
                 <h2 className="product-info__right__title">{product.name} {product.model}</h2>
@@ -80,7 +91,7 @@ const ProductInfo: FC<any> = () => {
                 <h2 className="product-info__right__title">{product.name} {product.model}</h2>
                 <span className="product-info__right__reviews">{product.reviewsCount} REVIEWS</span>
                 <p className="product-info__right__description">{product.description}</p>
-                <img src={product.mainImage} className="product-info__786__center__img" alt={product.name} />
+                <img src={product.mainImage} className="product-info__786__center__img" alt={product.name} onClick={handleSetViewImage} />
                 <span className="product-info__right__price">${product.price}.00 <span className="product-info__right__ml">| 50 ml</span></span>
                 <VolumeSelector volumes={product.volumes.split(",")} />
                 <div className="product-info__right__quantity">
@@ -93,6 +104,7 @@ const ProductInfo: FC<any> = () => {
                 </div>
                 <Accordion items={accordionItems} />
             </div>
+            <ImageViewer selectedImage={viewImage} setSelectedImage={setViewImage} />
         </div>
     );
 };

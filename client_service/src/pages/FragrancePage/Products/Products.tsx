@@ -1,10 +1,11 @@
+import { FC } from "react";
 import ProductCard from "../../../shared/components/ProductCard/ProductCard";
 import "./Products.css";
 
-const Products = () => {
+const Products: FC<any> = ({ products, setProducts }) => {
     return (
         <div className="products">
-            <ProductCard />
+            <ProductCard products={products} setProducts={setProducts} />
         </div>
     );
 };

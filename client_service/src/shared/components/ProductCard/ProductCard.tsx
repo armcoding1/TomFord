@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./ProductCard.css";
 import axios from "axios";
 import { Productable } from "../../../types/Productable";
 import VolumeSelector from "../VolumeSelector/VolumeSelector";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = () => {
-    const [products, setProducts] = useState<Productable[]>([]);
+const ProductCard: FC<any> = ({ products, setProducts }) => {
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null);
     const [productId, setProductId] = useState<number | null>(null);
     const navigate = useNavigate();

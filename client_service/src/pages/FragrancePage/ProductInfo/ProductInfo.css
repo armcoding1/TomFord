@@ -13,8 +13,13 @@
 }
 
 .product-info__left__img {
+    cursor: pointer;
     max-width: 100px;
     width: 100%;
+}
+
+.product-info__left__img.active {
+    border: 1px solid #000;
 }
 
 .product-info__center__img {
@@ -118,7 +123,7 @@
     .product-info__left {
         display: none;
     }
-    
+
     .product-info__center {
         display: none;
     }
@@ -131,7 +136,7 @@
         width: 100%;
         margin-bottom: 30px;
     }
-    
+
     .product-info__right__description {
         max-width: 400px;
     }

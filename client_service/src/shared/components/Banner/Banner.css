@@ -11,6 +11,7 @@
     justify-content: end;
     margin-bottom: 100px;
     padding: 25px;
+    background-attachment: fixed;
 }
 
 .general-page__btn {

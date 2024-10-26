@@ -3,6 +3,9 @@
     align-items: center;
     gap: 70px;
     background: #fff;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
 }
 
 .header__title {
