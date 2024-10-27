@@ -1,0 +1,17 @@
+.create-product {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.create-product__input {
+    padding: 10px;
+    font-weight: 600;
+    width: 20%;
+}
+
+.create-product__btn {
+    background-color: transparent;
+    padding: 15px 30px;
+    font-weight: 700;
+}

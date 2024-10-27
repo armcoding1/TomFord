@@ -1,10 +1,10 @@
-package com.tomford.basket_service;
+package com.tomford.admin_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BasketServiceApplicationTests {
+class AdminServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
