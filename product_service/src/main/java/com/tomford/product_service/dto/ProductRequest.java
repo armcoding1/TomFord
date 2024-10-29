@@ -38,4 +38,5 @@ public class ProductRequest {
     private String category;
     private Integer selled;
     private String hoverImage;
+    private boolean recommended;
 }

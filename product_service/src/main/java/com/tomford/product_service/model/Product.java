@@ -194,4 +194,6 @@ public class Product implements Serializable {
      */
     @Column(name = "hover_image", columnDefinition = "TEXT")
     private String hoverImage;
+
+    private boolean recommended;
 }

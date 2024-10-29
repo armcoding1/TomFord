@@ -129,12 +129,15 @@ public class ProductController {
         if (name.contains("_")) {
             splitedName = name.split("_");
 
-            String joinedName = Arrays.stream(splitedName)
-                    .map(String::toUpperCase)
-                    .collect(Collectors.joining(" "));
+            String joinedName = Arrays.stream(splitedName).map(String::toUpperCase).collect(Collectors.joining(" "));
             return productService.findByName(joinedName);
         }
 
         return productService.findByName(name.toUpperCase());
+    }
+
+    @GetMapping("/getTop3ByRecommended")
+    public List<Product> findTop3ByRecommendedTrue() {
+        return productService.findTop3ByRecommendedTrue();
     }
 }

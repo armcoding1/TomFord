@@ -14,4 +14,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findTop3ByOrderBySelledDesc();
 
     List<Product> findByName(String name);
+
+    List<Product> findTop3ByRecommendedTrue();
 }

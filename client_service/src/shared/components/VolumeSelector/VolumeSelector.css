@@ -12,6 +12,7 @@
     cursor: pointer;
     outline: none;
     width: calc(25% - 10px);
+    border-radius: 32px;
 }
 
 @media (max-width: 786px) {

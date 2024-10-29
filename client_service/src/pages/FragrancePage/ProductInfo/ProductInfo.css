@@ -9,13 +9,14 @@
 .product-info__left {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .product-info__left__img {
     cursor: pointer;
     max-width: 100px;
     width: 100%;
+    border-radius: 20px;
 }
 
 .product-info__left__img.active {
@@ -25,6 +26,7 @@
 .product-info__center__img {
     max-width: 580px;
     width: 100%;
+    border-radius: 32px;
 }
 
 .product-info__right__title {
@@ -69,6 +71,7 @@
 .product-info__right__btn {
     background-color: #000;
     color: #fff;
+    border-radius: 32px;
     font-weight: 700;
     padding: 12px 48px;
     border: none;
@@ -87,6 +90,7 @@
     font-weight: 700;
     gap: 20px;
     border: 1px solid #808080;
+    border-radius: 32px;
     padding: 10px 15px;
 }
 

@@ -31,30 +31,7 @@ public class ProductService implements Productable {
     public Product createProduct(ProductRequest productRequest) {
         Product savedProduct = null;
         try {
-            Product product = Product.builder()
-                    .name(productRequest.getName())
-                    .model(productRequest.getModel())
-                    .description(productRequest.getDescription())
-                    .rating(productRequest.getRating())
-                    .reviewsCount(productRequest.getReviewsCount())
-                    .price(productRequest.getPrice())
-                    .volumes(productRequest.getVolumes())
-                    .stockQuantity(productRequest.getStockQuantity())
-                    .available(productRequest.getAvailable())
-                    .details(productRequest.getDetails())
-                    .discount(productRequest.getDiscount())
-                    .tags(productRequest.getTags())
-                    .color(productRequest.getColor())
-                    .weight(productRequest.getWeight())
-                    .ingredients(productRequest.getIngredients())
-                    .videoUrl(productRequest.getVideoUrl())
-                    .galleryImages(productRequest.getGalleryImages())
-                    .mainImage(productRequest.getMainImage())
-                    .skuCode(SKUGenerator.generateSKU(8))
-                    .category(productRequest.getCategory())
-                    .selled(0)
-                    .hoverImage(productRequest.getHoverImage())
-                    .build();
+            Product product = Product.builder().name(productRequest.getName()).model(productRequest.getModel()).description(productRequest.getDescription()).rating(productRequest.getRating()).reviewsCount(productRequest.getReviewsCount()).price(productRequest.getPrice()).volumes(productRequest.getVolumes()).stockQuantity(productRequest.getStockQuantity()).available(productRequest.getAvailable()).details(productRequest.getDetails()).discount(productRequest.getDiscount()).tags(productRequest.getTags()).color(productRequest.getColor()).weight(productRequest.getWeight()).ingredients(productRequest.getIngredients()).videoUrl(productRequest.getVideoUrl()).galleryImages(productRequest.getGalleryImages()).mainImage(productRequest.getMainImage()).skuCode(SKUGenerator.generateSKU(8)).category(productRequest.getCategory()).selled(0).hoverImage(productRequest.getHoverImage()).build();
             savedProduct = productRepository.save(product);
         } catch (Exception e) {
             System.out.println("Error creating product");
@@ -118,32 +95,30 @@ public class ProductService implements Productable {
      * @return new updated product with type {@link Product}
      */
     public Product updateProduct(Long id, ProductRequest productRequest) {
-        return productRepository.findById(id)
-                .map(existingProduct -> {
-                    existingProduct.setName(productRequest.getName());
-                    existingProduct.setModel(productRequest.getModel());
-                    existingProduct.setDescription(productRequest.getDescription());
-                    existingProduct.setRating(productRequest.getRating());
-                    existingProduct.setReviewsCount(productRequest.getReviewsCount());
-                    existingProduct.setPrice(productRequest.getPrice());
-                    existingProduct.setVolumes(productRequest.getVolumes());
-                    existingProduct.setStockQuantity(productRequest.getStockQuantity());
-                    existingProduct.setAvailable(productRequest.getAvailable());
-                    existingProduct.setDetails(productRequest.getDetails());
-                    existingProduct.setDiscount(productRequest.getDiscount());
-                    existingProduct.setTags(productRequest.getTags());
-                    existingProduct.setColor(productRequest.getColor());
-                    existingProduct.setWeight(productRequest.getWeight());
-                    existingProduct.setIngredients(productRequest.getIngredients());
-                    existingProduct.setVideoUrl(productRequest.getVideoUrl());
-                    existingProduct.setGalleryImages(productRequest.getGalleryImages());
-                    existingProduct.setMainImage(productRequest.getMainImage());
-                    existingProduct.setSkuCode(SKUGenerator.generateSKU(8));
-                    existingProduct.setCategory(productRequest.getCategory());
-                    existingProduct.setHoverImage(productRequest.getHoverImage());
-                    return productRepository.save(existingProduct);
-                })
-                .orElse(null);
+        return productRepository.findById(id).map(existingProduct -> {
+            existingProduct.setName(productRequest.getName());
+            existingProduct.setModel(productRequest.getModel());
+            existingProduct.setDescription(productRequest.getDescription());
+            existingProduct.setRating(productRequest.getRating());
+            existingProduct.setReviewsCount(productRequest.getReviewsCount());
+            existingProduct.setPrice(productRequest.getPrice());
+            existingProduct.setVolumes(productRequest.getVolumes());
+            existingProduct.setStockQuantity(productRequest.getStockQuantity());
+            existingProduct.setAvailable(productRequest.getAvailable());
+            existingProduct.setDetails(productRequest.getDetails());
+            existingProduct.setDiscount(productRequest.getDiscount());
+            existingProduct.setTags(productRequest.getTags());
+            existingProduct.setColor(productRequest.getColor());
+            existingProduct.setWeight(productRequest.getWeight());
+            existingProduct.setIngredients(productRequest.getIngredients());
+            existingProduct.setVideoUrl(productRequest.getVideoUrl());
+            existingProduct.setGalleryImages(productRequest.getGalleryImages());
+            existingProduct.setMainImage(productRequest.getMainImage());
+            existingProduct.setSkuCode(SKUGenerator.generateSKU(8));
+            existingProduct.setCategory(productRequest.getCategory());
+            existingProduct.setHoverImage(productRequest.getHoverImage());
+            return productRepository.save(existingProduct);
+        }).orElse(null);
     }
 
     /**
@@ -167,5 +142,9 @@ public class ProductService implements Productable {
             System.out.println("Products not found with this name");
         }
         return products;
+    }
+
+    public List<Product> findTop3ByRecommendedTrue() {
+        return productRepository.findTop3ByRecommendedTrue();
     }
 }

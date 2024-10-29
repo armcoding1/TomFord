@@ -4,12 +4,13 @@
     justify-content: end;
     align-items: start;
     flex-direction: column;
-    width: 50%;
+    width: 33%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     padding: 20px;
+    margin-bottom: 100px;
 }
 
 .ad-banner-card__title {

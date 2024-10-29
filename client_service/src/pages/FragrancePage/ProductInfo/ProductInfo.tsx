@@ -74,7 +74,7 @@ const ProductInfo: FC<any> = () => {
                 <h2 className="product-info__right__title">{product.name} {product.model}</h2>
                 <span className="product-info__right__reviews">{product.reviewsCount} REVIEWS</span>
                 <p className="product-info__right__description">{product.description}</p>
-                <span className="product-info__right__price">${product.price}.00 <span className="product-info__right__ml">| 50 ml</span></span>
+                <span className="product-info__right__price">${product.price}.00</span>
                 <VolumeSelector volumes={product.volumes.split(",")} />
                 <div className="product-info__right__quantity">
                     <div className="product-info__right__quantity__count">
@@ -82,7 +82,7 @@ const ProductInfo: FC<any> = () => {
                         <span>{quantity}</span>
                         <button onClick={increment} className="product-info__right__quantity__btn">+</button>
                     </div>
-                    <button className="product-info__right__btn">ADD TO BAG</button>
+                    <button className="product-info__right__btn">BUY</button>
                 </div>
                 <Accordion items={accordionItems} />
             </div>
@@ -92,7 +92,7 @@ const ProductInfo: FC<any> = () => {
                 <span className="product-info__right__reviews">{product.reviewsCount} REVIEWS</span>
                 <p className="product-info__right__description">{product.description}</p>
                 <img src={product.mainImage} className="product-info__786__center__img" alt={product.name} onClick={handleSetViewImage} />
-                <span className="product-info__right__price">${product.price}.00 <span className="product-info__right__ml">| 50 ml</span></span>
+                <span className="product-info__right__price">${product.price}.00</span>
                 <VolumeSelector volumes={product.volumes.split(",")} />
                 <div className="product-info__right__quantity">
                     <div className="product-info__right__quantity__count">
